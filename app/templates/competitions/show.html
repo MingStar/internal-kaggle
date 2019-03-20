@@ -1,0 +1,19 @@
+{% extends 'layout.html' %}
+
+{% block title %}{{ comp.name }}{% endblock %}
+
+{% block content %}
+  <h1>{{ comp.name }}</h1>
+  <img src="{{ comp.image_url }}" class="centre">
+  <pre>
+{{ comp.description  }}
+  </pre>
+  <a href="{{ comp.training_data_url }}" class="btn btn-primary">Download Training Data</a>
+
+  <hr>
+
+  <h2> Leaderboard </h2>
+  {% with model=comp.leaderboard %}
+      {% include 'evaluations/leaderboard.html' %}
+  {% endwith %}
+{% endblock %}

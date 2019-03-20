@@ -1,0 +1,14 @@
+{% extends 'layout.html' %}
+
+{% block title %}Competitions{% endblock %}
+
+{% block content %}
+  <h1>Competitions</h1>
+    <div class="card-columns">
+    {% for comp in model %}
+        {% with comp=comp %}
+            {% include 'competitions/summary.html' %}
+        {% endwith %}
+    {% endfor %}
+    </div>
+{% endblock %}

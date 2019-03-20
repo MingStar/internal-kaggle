@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+
+{% block title %}Home{% endblock %}
+
+
+{% block content %}
+  <h1>Haggle (Hyper Kaggle)</h1>
+
+  <hr>
+
+  <h2>Recent Evaluations</h2>
+  {% with model=recent_evals %}
+      {% include 'evaluations/recent.html' %}
+  {% endwith %}
+{% endblock %}

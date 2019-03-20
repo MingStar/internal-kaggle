@@ -1,0 +1,13 @@
+<div class="card" style="width: 18rem;">
+  <a href="{{ comp.url }}">
+    <img class="card-img-top" src="{{ comp.image_url }}" alt="Card image cap">
+  </a>
+  <div class="card-body">
+    <h5 class="card-title">{{ comp.name }}</h5>
+    <p class="card-text">
+        {{ comp.short_description }}
+    </p>
+    <a href="{{ comp.training_data_url }}" class="btn btn-primary">Download</a>
+    <a href="{{ comp.url }}" class="btn btn-primary">Details</a>
+  </div>
+</div>

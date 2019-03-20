@@ -1,0 +1,24 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Team</th>
+      <th scope="col">Score</th>
+      <th scope="col">Tag</th>
+      <th scope="col">At</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for eval in model %}
+    <tr>
+      <td scope="row">{{ eval.team_name }}</td>
+      <td>{{ eval.final_score_str }}</td>
+      <td>{{ eval.docker_image_tag }}</td>
+      <td>
+        <a href="{{ eval.task_url }}" target="_blank">
+          {{ eval.created_at | datetimefilter}}
+        </a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>

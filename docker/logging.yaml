@@ -1,0 +1,33 @@
+---
+version: 1
+disable_existing_loggers: False
+formatters:
+  simple:
+    datefmt: "%Y-%m-%dT%H:%M:%S"
+    format: "%(asctime)s.%(msecs)03dZ|%(levelname)s|%(module)s::%(funcName)s|%(thread)d|%(message)s"
+
+handlers:
+  console:
+    class: logging.StreamHandler
+    level: DEBUG
+    formatter: simple
+    stream: ext://sys.stdout
+
+  file_handler:
+    class: logging.handlers.RotatingFileHandler
+    level: DEBUG
+    formatter: simple
+    filename: ext://logging.log_file_path
+    maxBytes: 10485760 # 10MB
+    backupCount: 20
+    encoding: utf8
+
+loggers:
+  pika:
+    level: INFO
+    handlers: [console, file_handler]
+    propagate: no
+
+root:
+  level: DEBUG
+  handlers: [console, file_handler]

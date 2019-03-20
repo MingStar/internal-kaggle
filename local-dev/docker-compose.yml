@@ -1,0 +1,57 @@
+version: "3"
+services:
+  redis:
+    image: redis:5
+    volumes:
+      - './data/redis-data:/data'
+    ports:
+      - '127.0.0.1:6379:6379'
+#  web:
+#    build: ..
+#    env_file:
+#      - .env.celery
+#      - .env.database
+#      - .env.dev
+#    ports:
+#      - '5000:5000'
+#    depends_on:
+#      - redis
+  worker:
+    build: ..
+    env_file:
+      - .env.celery
+      - .env.database
+      - .env.dev
+    environment:
+      RUN_MODE: WORKER
+      #HOST_WORKSPACE_PATH: 'the absolute path to ../data'
+      LOG_LEVEL: info
+    depends_on:
+      - redis
+    volumes:
+      - '/var/run/docker.sock:/var/run/docker.sock'
+      - '../data:/workspace'
+  monitor:
+    build: ..
+    env_file:
+      - .env.celery
+      - .env.database
+    environment:
+      RUN_MODE: MONITOR
+    volumes:
+      - './data/flower-data:/flower'
+    depends_on:
+      - redis
+    ports:
+      - '5555:5555'
+  postgres:
+    image: postgres:11
+    restart: always
+    environment:
+      POSTGRES_USER: internal-kaggle
+      POSTGRES_PASSWORD: internal-kaggle
+      POSTGRES_DB: internalKaggle
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - './data/postgres-data:/var/lib/postgresql/data'
