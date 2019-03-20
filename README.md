@@ -2,6 +2,8 @@
 
 Kaggle like platform for internal use.
 
+Implemented in Python, Flask and Celery.
+
 ## First time setup
 
 1. Install packages & start pipenv shell
