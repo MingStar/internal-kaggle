@@ -17,4 +17,4 @@ def get_recent_evaluations(num:int):
     .limit(num).all()
 
 def get_leaderboard(competition, num:int=10):
-  return competition.evaluations.order_by(desc(Evaluation.final_score)).limit(10)
+  return competition.evaluations.order_by(desc(Evaluation.final_score)).limit(num)
