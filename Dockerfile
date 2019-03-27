@@ -42,5 +42,5 @@ COPY --from=builder /usr/local/lib/python3.6/site-packages/ /usr/local/lib/pytho
 # source files
 COPY run.py ./
 COPY docker/* ./
-COPY migrations ./
-COPY app ./
+COPY migrations ./migrations
+COPY app ./app
