@@ -40,7 +40,8 @@ COPY --from=builder /usr/local/bin/flask /usr/local/bin/
 COPY --from=builder /usr/local/lib/python3.6/site-packages/ /usr/local/lib/python3.6/site-packages/
 
 # source files
-COPY run.py ./
 COPY docker/* ./
+COPY data ./data
 COPY migrations ./migrations
+COPY run.py ./
 COPY app ./app
