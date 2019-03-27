@@ -4,7 +4,10 @@ __pycache__/
 *.py[cod]
 *$py.class
 .pytest_cache/
+
+!data/competitions/iris
 data/
+
 .env
 env.sh
 static/
