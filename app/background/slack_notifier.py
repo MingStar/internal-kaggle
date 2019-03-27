@@ -31,12 +31,8 @@ class SlackNotifier:
           "color": "danger",
           "fallback": preview,
           "pretext": preview,
-          "fields": [
-            {
-              "title": f"Competition: {options['competition']}",
-              "value": msg
-            }
-          ]
+          "title": f"Competition: {options['competition']}",
+          "text": msg
       }]
     }
 
