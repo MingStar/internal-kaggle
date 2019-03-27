@@ -31,10 +31,15 @@ RUN apk update
 
 RUN apk add --no-cache docker uwsgi-python3 curl libpq
 
+# executables
 COPY --from=builder /usr/local/bin/celery /usr/local/bin/
 COPY --from=builder /usr/local/bin/flower /usr/local/bin/
+COPY --from=builder /usr/local/bin/flask /usr/local/bin/
+
+# site packages
 COPY --from=builder /usr/local/lib/python3.6/site-packages/ /usr/local/lib/python3.6/site-packages/
 
+# source files
 COPY run.py ./
 COPY docker/* ./
 COPY app/ ./app
