@@ -3,6 +3,7 @@ from flask import request, render_template
 import celery.states as states
 
 from app import celery
+from app.env import SITE_NAME
 from app.view_models import *
 from app import app, repository
 
@@ -11,7 +12,7 @@ logger = logging.getLogger(__name__)
 @app.route('/')
 def index():
     evals = [EvaluationViewModel(item) for item in repository.get_recent_evaluations(10)]
-    return render_template('index.html', recent_evals=evals)
+    return render_template('index.html', recent_evals=evals, site_name=SITE_NAME)
 
 @app.route('/competitions')
 def competitions():

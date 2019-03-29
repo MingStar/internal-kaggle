@@ -1,14 +1,17 @@
-# Code from https://stackoverflow.com/a/34832184/194964
-
+from app.env import SITE_NAME
 import pytz
-from pytz import timezone
 
 def datetimefilter(value, format="%d/%m/%Y %I:%M %p"):
+    # Code from https://stackoverflow.com/a/34832184/194964
     tz = pytz.timezone('Australia/Sydney')
     utc = pytz.timezone('UTC')
     value = utc.localize(value, is_dst=None).astimezone(pytz.utc)
     local_dt = value.astimezone(tz)
     return local_dt.strftime(format)
 
+def page_title(title):
+    return f"{SITE_NAME} - {title}"
+
 def init_app(app):
     app.jinja_env.filters['datetimefilter'] = datetimefilter
+    app.jinja_env.filters['page_title'] = page_title

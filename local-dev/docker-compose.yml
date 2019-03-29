@@ -19,16 +19,16 @@ services:
     volumes:
       - './data/postgres-data:/var/lib/postgresql/data'
 
-  web:
-    build: ..
-    env_file:
-      - .env.celery
-      - .env.database
-      - .env.dev
-    ports:
-      - '5000:5000'
-    depends_on:
-      - redis
+#  web:
+#    build: ..
+#    env_file:
+#      - .env.celery
+#      - .env.database
+#      - .env.dev
+#    ports:
+#      - '5000:5000'
+#    depends_on:
+#      - redis
   worker:
     build: ..
     env_file:

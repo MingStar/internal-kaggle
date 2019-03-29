@@ -18,3 +18,4 @@ DOCKER_REGISTRY = os.getenv('DOCKER_REGISTRY', '')
 HOST_WORKSPACE_PATH = os.getenv('HOST_WORKSPACE_PATH', '/data')
 
 WORKSPACE_PATH = '/workspace'
+SITE_NAME = os.getenv('SITE_NAME', 'Internal Kaggle')
