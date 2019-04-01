@@ -12,16 +12,20 @@ logger = logging.getLogger(__name__)
 
 class DockerRunner:
 
-  def __init__(self, image_name, image_tag):
+  def __init__(self, image_name, image_tag, pull_always=False):
     self.image_name = image_name
     self.image_tag = image_tag
+    self.pull_always = pull_always
     self.client = docker.from_env()
 
   def _get_image(self):
     image_name = "%s%s:%s" % (DOCKER_REGISTRY, self.image_name, self.image_tag)
     try:
       logger.info("Getting image %s", image_name)
-      img = self.client.images.get(image_name)
+      if self.pull_always:
+        img = self.client.images.pull(image_name)
+      else: # get from cache first
+        img = self.client.images.get(image_name)
       logger.info("Got image %s, id: %s", image_name, img.short_id)
     except ImageNotFound:
       logger.info("Image not found: pulling image %s", image_name)

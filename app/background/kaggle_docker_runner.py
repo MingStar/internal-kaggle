@@ -22,7 +22,8 @@ class KaggleDockerRunner:
   def run(self, mode):
     ensure_path(self.output_path)
     docker_runner = DockerRunner(self.options["docker_image_name"],
-                                 self.options["docker_image_tag"]
+                                 self.options["docker_image_tag"],
+                                 pull_always=True
                                  )
     result = docker_runner.run_container(
       command=["./entrypoint.sh", self.competition_code, "/input", "/output"],
