@@ -8,17 +8,23 @@ iris = Competition(
   name = 'Iris Flowers',
   code = 'iris',
   image_url='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTt-bTDxcUL6-tMCxNEd7Xetp9GnmG4MNqNzVPoTLtpt5ItfhcNKA',
-  training_data_url='/data/iris.csv',
-  description="""The Iris Flowers Dataset involves predicting the flower species given measurements of iris flowers.
+  training_data_url='/data/iris.zip',
+  description="""<p>The <strong>Iris Flowers </strong>Dataset involves predicting the flower species given measurements of iris flowers.</p>
 
-It is a multi-class classification problem. The number of observations for each class is balanced. There are 150 observations with 4 input variables and 1 output variable. The variable names are as follows:
+<p>It is a multi-class classification problem.</p>
 
-Sepal length in cm.
-Sepal width in cm.
-Petal length in cm.
-Petal width in cm.
-Class (Iris Setosa, Iris Versicolour, Iris Virginica).
-The baseline performance of predicting the most prevalent class is a classification accuracy of approximately 26%.
+<p>The number of observations for each class is balanced. There are 150 observations with 4 input variables and 1 output variable.</p>
+
+<p>The variable names are as follows:</p>
+
+<ul>
+	<li>Sepal length in cm.</li>
+	<li>Sepal width in cm.</li>
+	<li>Petal length in cm.</li>
+	<li>Petal width in cm.</li>
+</ul>
+
+<p>The baseline performance of predicting the most prevalent class is a classification accuracy of approximately 26%.</p>
 """
 )
 

@@ -5,7 +5,7 @@
   <div class="card-body">
     <h5 class="card-title">{{ comp.name }}</h5>
     <p class="card-text">
-        {{ comp.short_description }}
+        {{ comp.short_description|safe }}
     </p>
     <a href="{{ comp.training_data_url }}" class="btn btn-primary">Download</a>
     <a href="{{ comp.url }}" class="btn btn-primary">Details</a>

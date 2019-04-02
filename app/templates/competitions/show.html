@@ -5,9 +5,9 @@
 {% block content %}
   <h1>{{ comp.name }}</h1>
   <img src="{{ comp.image_url }}" class="centre">
-  <pre>
-{{ comp.description  }}
-  </pre>
+  <div>
+    {{ comp.description|safe }}
+  </div>
   <a href="{{ comp.training_data_url }}" class="btn btn-primary">Download Training Data</a>
 
   <hr>
