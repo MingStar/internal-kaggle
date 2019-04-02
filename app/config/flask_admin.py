@@ -1,10 +1,10 @@
 from flask_admin import Admin
 from flask_admin.form import SecureForm
 from flask_admin.contrib.sqla import ModelView
-from app.models import Competition
+from app.models import Competition, Evaluation
 from wtforms import TextAreaField
 from wtforms.widgets import TextArea
-
+from app.env import SITE_NAME
 
 class CKTextAreaWidget(TextArea):
   def __call__(self, field, **kwargs):
@@ -17,6 +17,13 @@ class CKTextAreaWidget(TextArea):
 
 class CKTextAreaField(TextAreaField):
   widget = CKTextAreaWidget()
+
+class EvaluationModelView(ModelView):
+  can_create = False
+  can_edit = False
+  can_delete = False
+  column_exclude_list = ['competition', 'task_id']
+  column_searchable_list = ['team_name', 'docker_image_name']
 
 class CompetitionModelView(ModelView):
   form_base_class = SecureForm
@@ -38,6 +45,6 @@ class CompetitionModelView(ModelView):
 
 def init_app(app, db):
   c = CompetitionModelView(Competition, db.session, url='/admin')
-  admin = Admin(app, index_view=c)
-  #admin.add_view()
+  admin = Admin(app, name=f"{SITE_NAME} Admin", index_view=c)
+  admin.add_view(EvaluationModelView(Evaluation, db.session))
   return admin

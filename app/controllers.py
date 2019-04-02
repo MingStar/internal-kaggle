@@ -1,9 +1,9 @@
 import logging
-from flask import request, render_template
+from flask import request, render_template, redirect
 import celery.states as states
 
 from app import celery
-from app.env import SITE_NAME
+from app.env import SITE_NAME, GET_STARTED_URL
 from app.view_models import *
 from app import app, repository
 
@@ -27,7 +27,10 @@ def competition(id):
 
 @app.route('/get_started')
 def get_started():
-    return render_template('get_started.html')
+    if GET_STARTED_URL:
+        return redirect(GET_STARTED_URL, code=302)
+    else:
+        return render_template('get_started.html')
 
 
 def validate_options(options):
