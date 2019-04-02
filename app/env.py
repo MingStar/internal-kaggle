@@ -13,9 +13,11 @@ CELERY_RESULT_BACKEND = os.getenv('CELERY_RESULT_BACKEND')
 FLOWER_BASE_URL = os.getenv('FLOWER_BASE_URL')
 SLACK_WEB_HOOK_URL = os.getenv('SLACK_WEB_HOOK_URL')
 SERVER_NAME = os.getenv('SERVER_NAME')
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 DOCKER_REGISTRY = os.getenv('DOCKER_REGISTRY', '')
 HOST_WORKSPACE_PATH = os.getenv('HOST_WORKSPACE_PATH', '/data')
 
 WORKSPACE_PATH = '/workspace'
 SITE_NAME = os.getenv('SITE_NAME', 'Internal Kaggle')
+
