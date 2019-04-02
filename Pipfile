@@ -16,6 +16,7 @@ flower = "*"
 redis = "*"
 requests = "*"
 bootstrap-flask = "*"
+flask-admin = "*"
 
 [dev-packages]
 pytest = "*"
