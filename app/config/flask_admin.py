@@ -29,7 +29,15 @@ class CompetitionModelView(ModelView):
     'description': CKTextAreaField
   }
 
+  def __init__(self, model, session, *args, **kwargs):
+    super(CompetitionModelView, self).__init__(model, session, *args, **kwargs)
+    self.static_folder = 'static'
+    self.endpoint = 'admin'
+    self.name = 'Competition'
+
+
 def init_app(app, db):
-  admin = Admin(app)
-  admin.add_view(CompetitionModelView(Competition, db.session))
+  c = CompetitionModelView(Competition, db.session, url='/admin')
+  admin = Admin(app, index_view=c)
+  #admin.add_view()
   return admin
