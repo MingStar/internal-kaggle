@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>{{ '' | page_title }}{% block title %}{% endblock %}</title>
+    <title>{{ ' - ' | site_name }}{% block title %}{% endblock %}</title>
     <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
     {{ bootstrap.load_css() }}
     <link rel="stylesheet" href="{{url_for('.static', filename='main.css')}}">
@@ -28,7 +28,7 @@
     {% block content %}{% endblock %}
     <footer class="text-center">
         {% block footer %}
-            <small> footer goes here
+            <small> {{ '' | site_name }}
             </small>
         {% endblock %}
     </footer>

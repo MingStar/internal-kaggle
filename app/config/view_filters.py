@@ -9,9 +9,9 @@ def datetimefilter(value, format="%d/%m/%Y %I:%M %p"):
     local_dt = value.astimezone(tz)
     return local_dt.strftime(format)
 
-def page_title(title):
-    return f"{SITE_NAME} - {title}"
+def site_name(delimiter=''):
+    return SITE_NAME + delimiter
 
 def init_app(app):
     app.jinja_env.filters['datetimefilter'] = datetimefilter
-    app.jinja_env.filters['page_title'] = page_title
+    app.jinja_env.filters['site_name'] = site_name
