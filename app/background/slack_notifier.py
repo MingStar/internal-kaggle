@@ -51,7 +51,7 @@ class SlackNotifier:
         "fields": [
           {
             "title": "Score",
-            "value": "`%.4f`" % eval.final_score,
+            "value": "`%.3f`" % eval.final_score,
             "short": True
           },
           {

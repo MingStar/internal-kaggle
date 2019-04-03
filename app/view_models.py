@@ -47,7 +47,7 @@ class EvaluationViewModel(ViewModel):
 
   @property
   def final_score_str(self):
-    return "%.2f" % self.model.final_score
+    return "%.3f" % self.model.final_score
 
   @property
   def task_url(self):

@@ -23,12 +23,13 @@ class DockerRunner:
     try:
       logger.info("Getting image %s", image_name)
       if self.pull_always:
+        logger.info("pull_always flag is set to `%s`. Pulling image %s", self.pull_always, image_name)
         img = self.client.images.pull(image_name)
       else: # get from cache first
         img = self.client.images.get(image_name)
       logger.info("Got image %s, id: %s", image_name, img.short_id)
     except ImageNotFound:
-      logger.info("Image not found: pulling image %s", image_name)
+      logger.info("Image not found. Pulling image %s", image_name)
       img = self.client.images.pull(image_name)
     return img
 
