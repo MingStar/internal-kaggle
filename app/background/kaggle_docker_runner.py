@@ -3,7 +3,7 @@ import docker
 import logging
 from app.background.docker_runner import DockerRunner
 from app.background.enum import EvaluationMode
-from app.env import HOST_WORKSPACE_PATH, WORKSPACE_PATH
+from app.env import HOST_WORKSPACE_PATH, WORKSPACE_PATH, PULL_DOCKER_IMAGE_ALWAYS
 
 logger = logging.getLogger(__file__)
 
@@ -23,7 +23,7 @@ class KaggleDockerRunner:
     ensure_path(self.output_path)
     docker_runner = DockerRunner(self.options["docker_image_name"],
                                  self.options["docker_image_tag"],
-                                 pull_always=True
+                                 pull_always=PULL_DOCKER_IMAGE_ALWAYS
                                  )
     result = docker_runner.run_container(
       command=["./entrypoint.sh", self.competition_code, "/input", "/output"],
